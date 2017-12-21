@@ -10,7 +10,21 @@
 namespace Middleware;
 
 
-class DemoMiddleware
+use FastD\Middleware\DelegateInterface;
+use FastD\Middleware\Middleware;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+class DemoMiddleware extends Middleware
 {
 
+    /**
+     * @param ServerRequestInterface $request
+     * @param DelegateInterface $next
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request, DelegateInterface $next)
+    {
+        // TODO: Implement handle() method.
+    }
 }

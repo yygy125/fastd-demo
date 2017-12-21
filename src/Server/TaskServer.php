@@ -10,7 +10,9 @@
 namespace Server;
 
 
-class TaskServer
+use FastD\Servitization\Server\HTTPServer;
+
+class TaskServer extends HTTPServer
 {
 
 }
