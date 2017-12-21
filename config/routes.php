@@ -1,6 +1,8 @@
 <?php
 
-route()->get('/', 'WelcomeController@welcome');
+$router = route();
+
+$router->get('/', 'WelcomeController@welcome');
 // cache
 // model
 // middleware
