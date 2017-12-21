@@ -28,4 +28,16 @@ class WelcomeController
             'msg' => 'welcome fastd'
         ]);
     }
+
+    /**
+     * @param ServerRequest $request
+     */
+    public function hello(ServerRequest $request)
+    {}
+
+    /**
+     * @param ServerRequest $request
+     */
+    public function restful(ServerRequest $request)
+    {}
 }
