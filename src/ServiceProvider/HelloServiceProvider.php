@@ -13,7 +13,7 @@ namespace ServiceProvider;
 use FastD\Container\Container;
 use FastD\Container\ServiceProviderInterface;
 
-class DemoServiceProvider implements ServiceProviderInterface
+class HelloServiceProvider implements ServiceProviderInterface
 {
     /**
      * @param Container $container
@@ -21,6 +21,6 @@ class DemoServiceProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        // TODO: Implement register() method.
+        config()->load(app()->getPath().'/config/custom.php');
     }
 }

@@ -8,11 +8,9 @@
  */
 
 return [
-    'host' => 'ws://'.get_local_ip().':9999',
-    'class' => \FastD\Servitization\Server\HTTPServer::class,
+    'host' => '0.0.0.0:9527',
+    'class' => \Server\TaskServer::class,
     'options' => [
-        'user' => 'nobody',
-        'group' => 'nogroup',
         'pid_file' => __DIR__ . '/../runtime/pid/' . app()->getName() . '.pid',
         'log_file' => __DIR__ . '/../runtime/logs/' . app()->getName() . '.pid',
         'log_level' => 5,
@@ -20,9 +18,12 @@ return [
         'task_worker_num' => 20,
     ],
     'processes' => [
-        \Process\DemoProcess::class
+        \Process\HelloProcess::class
     ],
     'listeners' => [
-
+        [
+            'host' => '0.0.0.0:9528',
+            'class' => \FastD\Servitization\Server\TCPServer::class
+        ]
     ],
 ];

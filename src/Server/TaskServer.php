@@ -10,9 +10,11 @@
 namespace Server;
 
 
+use FastD\Http\Request;
 use FastD\Servitization\Server\HTTPServer;
+use swoole_http_request;
+use swoole_http_response;
 
 class TaskServer extends HTTPServer
 {
-
 }

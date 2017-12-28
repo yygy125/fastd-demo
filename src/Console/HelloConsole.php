@@ -11,18 +11,24 @@ namespace Console;
 
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DemoConsole extends Command
+/**
+ * Class DemoConsole
+ * @package Console
+ */
+class HelloConsole extends Command
 {
     public function configure()
     {
-        $this->setName('demo');
+        $this->setName('hello');
+        $this->addArgument('name', InputArgument::OPTIONAL, '', 'jan');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('hello world');
+        $output->writeln('hello '.$input->getArgument('name'));
     }
 }

@@ -15,9 +15,8 @@ use FastD\Middleware\Middleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class DemoMiddleware extends Middleware
+class ManMiddleware extends Middleware
 {
-
     /**
      * @param ServerRequestInterface $request
      * @param DelegateInterface $next
@@ -25,6 +24,13 @@ class DemoMiddleware extends Middleware
      */
     public function handle(ServerRequestInterface $request, DelegateInterface $next)
     {
-        // TODO: Implement handle() method.
+        $man = $request->getAttribute('name');
+        if ('jan' === $man) {
+            $request->withAttribute('name', '帅气的'.$man);
+        } else if ('runnerlee' === $man) {
+            $request->withAttribute('name', '还好的'.$man);
+        }
+
+        return $next->process($request);
     }
 }

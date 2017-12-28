@@ -9,10 +9,10 @@
 
 namespace Process;
 
-use FastD\Swoole\Process;
+use FastD\Process\AbstractProcess;
 use swoole_process;
 
-class DemoProcess extends Process
+class HelloProcess extends AbstractProcess
 {
     public function handle(swoole_process $swoole_process)
     {

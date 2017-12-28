@@ -19,9 +19,8 @@ return [
     'log' => [
         [
             \Monolog\Handler\StreamHandler::class,
-            'error.log',
-            \Monolog\Logger::ERROR,
-            \FastD\Logger\Formatter\StashFormatter::class,
+            'info.log',
+            \Monolog\Logger::ERROR
         ],
     ],
 
@@ -58,6 +57,8 @@ return [
         \FastD\ServiceProvider\DatabaseServiceProvider::class,
         \FastD\ServiceProvider\CacheServiceProvider::class,
         \FastD\ServiceProvider\MoltenServiceProvider::class,
+        \ServiceProvider\HelloServiceProvider::class,
+        \FastD\Viewer\Viewer::class,
     ],
 
     /**
@@ -78,6 +79,9 @@ return [
                     'code' => 401
                 ]
             ]
-        ])
+        ]),
+        'man' => [
+            \Middleware\ManMiddleware::class
+        ]
     ],
 ];
