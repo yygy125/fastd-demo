@@ -13,6 +13,33 @@ return [
      */
     'name' => 'dobee',
 
+    /*
+     * The application timezone.
+     */
+    'timezone' => 'PRC',
+
+    /**
+     * Bootstrap service.
+     */
+    'services' => [
+        \FastD\ServiceProvider\RouteServiceProvider::class,
+        \FastD\ServiceProvider\LoggerServiceProvider::class,
+        \FastD\ServiceProvider\DatabaseServiceProvider::class,
+        \FastD\ServiceProvider\CacheServiceProvider::class,
+        \FastD\ServiceProvider\MoltenServiceProvider::class,
+        \ServiceProvider\HelloServiceProvider::class,
+        \FastD\Viewer\Viewer::class,
+    ],
+
+    /**
+     * Http middleware
+     */
+    'middleware' => [
+        'man' => [
+            \Middleware\ManMiddleware::class,
+        ],
+    ],
+
     /**
      * Application logger path
      */
@@ -20,7 +47,7 @@ return [
         [
             \Monolog\Handler\StreamHandler::class,
             'info.log',
-            \Monolog\Logger::ERROR
+            \Monolog\Logger::ERROR,
         ],
     ],
 
@@ -46,42 +73,5 @@ return [
                 'trace' => explode("\n", $e->getTraceAsString()),
             ];
         },
-    ],
-
-    /**
-     * Bootstrap service.
-     */
-    'services' => [
-        \FastD\ServiceProvider\RouteServiceProvider::class,
-        \FastD\ServiceProvider\LoggerServiceProvider::class,
-        \FastD\ServiceProvider\DatabaseServiceProvider::class,
-        \FastD\ServiceProvider\CacheServiceProvider::class,
-        \FastD\ServiceProvider\MoltenServiceProvider::class,
-        \ServiceProvider\HelloServiceProvider::class,
-        \FastD\Viewer\Viewer::class,
-    ],
-
-    /**
-     * Http middleware
-     */
-    'middleware' => [
-        'basic.auth' => new FastD\BasicAuthenticate\HttpBasicAuthentication([
-            'authenticator' => [
-                'class' => \FastD\BasicAuthenticate\PhpAuthenticator::class,
-                'params' => [
-                    'foo' => 'bar'
-                ]
-            ],
-            'response' => [
-                'class' => \FastD\Http\JsonResponse::class,
-                'data' => [
-                    'msg' => 'not allow access',
-                    'code' => 401
-                ]
-            ]
-        ]),
-        'man' => [
-            \Middleware\ManMiddleware::class
-        ]
     ],
 ];
