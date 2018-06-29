@@ -1,0 +1,23 @@
+<script>
+
+var ws = new WebSocket("ws://127.0.0.1:9527"); 
+ws.onopen = function(evt) {  
+    console.log("Connection open ...");  
+    var data = {
+      "method":"POST",
+      "path":"/",
+      "args":{
+        "foo":"bar"
+      }
+    };
+    data = JSON.stringify(data);
+    ws.send(data);  
+};  
+ws.onmessage = function(evt) {  
+    console.log("Received Message: " + evt.data);  
+    ws.close();  
+};  
+ws.onclose = function(evt) {  
+    console.log("Connection closed.");  
+}; 
+</script>
