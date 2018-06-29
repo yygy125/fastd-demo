@@ -1,21 +1,32 @@
-# DoBee
-
-[![Build Status](https://travis-ci.org/JanHuang/dobee.svg?branch=master)](https://travis-ci.org/JanHuang/dobee)
-[![PHP Require Version](https://img.shields.io/badge/php-%3E%3D5.6-8892BF.svg)](https://secure.php.net/)
-[![Swoole Require Version](https://img.shields.io/badge/swoole-%3E%3D1.9.6-8892BF.svg)](http://www.swoole.com/)
-[![Latest Stable Version](https://poser.pugx.org/fastd/dobee/v/stable)](https://packagist.org/packages/fastd/dobee)
-[![Latest Unstable Version](https://poser.pugx.org/fastd/dobee/v/unstable)](https://packagist.org/packages/fastd/dobee)
-[![License](https://poser.pugx.org/fastd/dobee/license)](https://packagist.org/packages/fastd/dobee)
-[![composer.lock](https://poser.pugx.org/fastd/dobee/composerlock)](https://packagist.org/packages/fastd/dobee)
-
-FastD API 开发骨架
-
-### 文档
-
-* [中文文档](https://fastdlabs.com/)
-
-### Support
-
-如果你在使用中遇到问题，请联系: [bboyjanhuang@gmail.com](mailto:bboyjanhuang@gmail.com). 微博: [编码侠](http://weibo.com/ecbboyjan)
-
-## License MIT
+# 页面缓存插件使用教程
+1.安装
+  正式包 composer require fastd/cache-provider （暂时不能用 by.2018-06-29）
+  开发包 composer require "fastd/cache-provider:dev-master"
+ 
+2.安装完成之后，修改配置文件 config/app.php 找到 services增加 \FastD\CacheProvider\CacheServiceProvider::class，如下示例
+  ```
+    'services' => [
+        \FastD\ServiceProvider\RouteServiceProvider::class,
+        \FastD\ServiceProvider\LoggerServiceProvider::class,
+        \FastD\ServiceProvider\DatabaseServiceProvider::class,
+        \FastD\ServiceProvider\CacheServiceProvider::class,
+        \FastD\ServiceProvider\MoltenServiceProvider::class,
+        \ServiceProvider\HelloServiceProvider::class,
+        \FastD\Viewer\Viewer::class,
+        \FastD\CacheProvider\CacheServiceProvider::class,//新增的在此，上面的与此无关
+    ],
+    
+  ```
+  3.设置页面缓存时长【此步可选，不设置默认60秒】
+    config/config.php 修改或增加 common.cache.lifetime ，代码示例如下
+ ```
+  return [
+    'common' => [
+      'cache' => [
+        'lifetime' => 60
+       ],
+    ],
+  ];
+ ```
+ 注：只针对GET请求正常响应码为200的页面有缓存；
+ 完成；
