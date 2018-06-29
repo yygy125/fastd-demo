@@ -13,7 +13,8 @@
     "require": {
         "php": ">=5.6",
         "fastd/fastd": "^3.2",
-        "fastd/viewer": "^0.1.0"
+        "fastd/viewer": "^0.1.0",
+        "fastd/cache-provider": "dev-master"
     },
     "require-dev": {
         "phpunit/dbunit": "^2.0"
