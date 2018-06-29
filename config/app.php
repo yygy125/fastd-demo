@@ -29,6 +29,7 @@ return [
         \FastD\ServiceProvider\MoltenServiceProvider::class,
         \ServiceProvider\HelloServiceProvider::class,
         \FastD\Viewer\Viewer::class,
+        \FastD\CacheProvider\CacheServiceProvider::class,
     ],
 
     /**
